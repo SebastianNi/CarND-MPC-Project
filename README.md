@@ -1,6 +1,10 @@
 # CarND-Controls-MPC
 Self-Driving Car Engineer Nanodegree Program
 
+The result of the tuned MPC can be seen in this [video](https://drive.google.com/open?id=0B0agIiDyIPj1VVVLcTg5Sk9LS28).
+
+<img src="screenshot/mpc.png" width="900" alt="Combined Image" />
+
 ---
 
 ## Dependencies
