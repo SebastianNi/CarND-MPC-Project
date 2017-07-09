@@ -99,16 +99,23 @@ int main() {
           *
           */
 
+          // Estimate the vehicle's position due to the 100ms latency
+          // Use just 0.05 instead of 0.1 for latency since the time for the calculations needs to be taken in account
+          px += v * cos(psi) * 0.05;
+          py += v * sin(psi) * 0.05;
+
+          unsigned int number_of_waypoints = ptsx.size();
+
           // Create vectors for the transformed waypoints
-          Eigen::VectorXd trans_wps_x(6);
-          Eigen::VectorXd trans_wps_y(6);
+          Eigen::VectorXd trans_wps_x(number_of_waypoints);
+          Eigen::VectorXd trans_wps_y(number_of_waypoints);
 
           double delta_x;
           double delta_y;
           // Calculate sin and cos from -psi to rotate the global waypoints to waypoints in the vehicle's coordinate system
           double sin_psi = sin(-psi);
           double cos_psi = cos(-psi);
-          for(unsigned int i = 0; i < ptsx.size(); i++) {
+          for(unsigned int i = 0; i < number_of_waypoints; i++) {
             // Calculate the difference for all waypoints to the cars current position
             delta_x = ptsx[i] - px;
             delta_y = ptsy[i] - py;
@@ -151,9 +158,9 @@ int main() {
 
           //.. add (x,y) points to list here, points are in reference to the vehicle's coordinate system
           // the points in the simulator are connected by a Yellow line
-          // Fit a polynomial through the next 60 x values (meters) of the road (vehicle's coordinate system)
+          // Fit a polynomial through the next 50 x values (meters) of the road (vehicle's coordinate system)
           // Use every fifth x value to fit the polynomial
-          for (int i = 1; i <= 12; i++) {
+          for (int i = 1; i <= 10; i++) {
             next_x_vals.push_back(5 * i);
             next_y_vals.push_back(polyeval(coeffs, 5 * i));
           }
