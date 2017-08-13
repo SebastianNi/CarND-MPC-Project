@@ -5,7 +5,7 @@ My 10th Project in the Self-Driving Car Engineer Nanodegree at Udacity
 
 ### Student describes the model in detail. This includes the state, actuators and update equations.
 
-The model uses six state variables. Each variable contains a value from the vehicle's coordinate system. The state variables descripe the current state of the vehicle and the actuator variables contain values to influence the state variables in the right way.
+The model uses six state variables. Each variable contains a value from the vehicle's coordinate system. The state variables describe the current state of the vehicle and the actuator variables contain values to influence the state variables in the right way.
 
 State variables:<br>
 **x**: The x position<br>
